@@ -4,58 +4,217 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Form</title>
-
-  <!-- Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
-    crossorigin="anonymous"
-  />
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet"
-  />
+  <title>Subash Lama | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      color: #fff;
+    }
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+      padding: 60px 20px 20px 20px;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-align: center;
+      width: 100%;
+    }
+    h2 {
+      text-align: center;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    .btn-outline-light {
+      margin: 1rem;
+      padding: 10px 30px;
+      border-radius: 30px;
+      text-transform: uppercase;
+      font-weight: 600;
+      border: 2px solid #fff;
+      color: #fff;
+      background-color: transparent;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.4s ease;
+      display: inline-block;
+      z-index: 0;
+    }
+    .btn-outline-light::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background-color: #fff;
+      z-index: 1;
+      transition: width 0.4s ease;
+    }
+    .btn-outline-light:hover {
+      color: #000;
+    }
+    .btn-outline-light:hover::before {
+      width: 100%;
+    }
+    .button-group {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    section {
+      background: rgba(0,0,0,0.6);
+      border-radius: 16px;
+      margin: 20px 0;
+      padding: 30px 20px;
+      max-width: 900px;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .project-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: stretch;
+      width: 100%;
+    }
+    .project-card {
+      background: rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 20px;
+      width: 260px;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .footer {
+      margin-top: 40px;
+      color: #ccc;
+      font-size: 0.95rem;
+      text-align: center;
+      width: 100%;
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Background Video -->
-  <video autoplay muted loop id="bg-video" class="position-fixed w-100 h-100" style="object-fit:cover; z-index:-1;">
-    <source src="your-video-file.mp4" type="video/mp4" />
+  <audio autoplay loop>
+  <source src="ocean-waves-250310.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+</body>
+</html>
+
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="22183-712840599.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
+  <div id="overlay"></div>
 
-  <!-- SVG Definitions (Icons) -->
-  <!-- [SVGs remain unchanged, placed here] -->
+  <div class="content">
+    <h1>Subash Lama</h1>
+    <p>System Administrator | Virtualization Expert | Creative Technologist | Record Producer</p>
+    <div class="button-group">
+      <a href="#about" class="btn btn-outline-light">About</a>
+      <a href="projects.html" target="_blank" class="btn btn-outline-light">Projects</a>
+      <a href="#skills" class="btn btn-outline-light">Skills</a>
+      <a href="#contact" class="btn btn-outline-light">Contact</a>
+      <a href="record-producer.html" target="_blank" class="btn btn-outline-light">Record Producer</a>
 
-  <!-- Contact Section -->
-  <section id="contact-form">
-    <!-- [Contact form content remains unchanged] -->
-  </section>
+    </div>
 
-  <!-- Optional Additional Video Section -->
-  <section class="container mt-5">
-    <video controls class="w-100 rounded shadow">
-      <source src="media/video.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </section>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am Subash, a passionate System Architect and Creative Explorer with expertise in virtualization, automation, innovative technology solutions and Music Production. I thrive on solving complex problems and building scalable systems.
+      </p>
+    </section>
 
-  <!-- Scripts -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
-    crossorigin="anonymous"
-  ></script>
-  <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project-list">
+        <div class="project-card">
+          <h4>Virtual Lab Automation</h4>
+          <p>Designed and deployed a scalable virtual lab for training and testing, reducing setup time by 70%.</p>
+        </div>
+        <div class="project-card">
+          <h4>Cloud Migration Suite</h4>
+          <p>Led the migration of legacy systems to cloud infrastructure, improving reliability and cost efficiency.</p>
+        </div>
+        <div class="project-card">
+          <h4>Monitoring Dashboard</h4>
+          <p>Developed a real-time dashboard for system health and alerts, enhancing proactive maintenance.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <p>
+        <strong>Technologies:</strong> VMware, Hyper-V, Docker, Kubernetes, AWS, Azure<br>
+        <strong>Languages:</strong> Python, Bash, PowerShell<br>
+        <strong>Other:</strong> Automation, System Design, Security, Troubleshooting
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        Email: <a href="mailto:lamasubash107@gmail.com" style="color:#fff;text-decoration:underline;">lamasubash107@gmail.com</a>
+      </p>
+    </section>
+
+    <div class="footer">
+      &copy; 2024 Subash Lama. All rights reserved.
+    </div>
+  </div>
 </body>
-
 </html>
