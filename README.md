@@ -1,4 +1,4 @@
-# 🚀 Automated Portfolio Hosting with Docker & Bash
+# 🚀 Automated Static Webiste Hosting with Docker & Bash
 
 This project hosts a multimedia-rich HTML portfolio using Docker, with automation powered by Bash scripting. Designed to launch the portfolio in your browser every 30 seconds (without duplicate tabs), it also includes logging functionality for monitoring behavior. Perfect for experimenting with DevOps workflows while adding a creative twist.
 
