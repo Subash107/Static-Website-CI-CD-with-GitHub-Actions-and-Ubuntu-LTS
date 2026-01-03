@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subash Lama | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      color: #fff;
+    }
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -2;
+    }
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+      padding: 60px 20px 20px 20px;
+      perspective: 1400px;
+      gap: 1rem;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      margin-bottom: 1.5rem;
+    }
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 1rem;
+    }
+    .btn-outline-light {
+      margin: 1rem;
+      padding: 10px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      border: 2px solid #fff;
+      color: #fff;
+      background-color: transparent;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.4s ease;
+    }
+    .btn-outline-light::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background-color: #fff;
+      z-index: -1;
+      transition: width 0.4s ease;
+    }
+    .btn-outline-light:hover {
+      color: #000;
+    }
+    .btn-outline-light:hover::before {
+      width: 100%;
+    }
+    .button-group {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    section {
+      width: 100%;
+    }
+    .glass-card {
+      background: linear-gradient(155deg, rgba(12,19,32,0.85), rgba(5,9,17,0.65));
+      border-radius: 18px;
+      margin: 20px 0;
+      padding: 30px 25px;
+      max-width: 920px;
+      width: 100%;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      transform-style: preserve-3d;
+      animation: float 10s ease-in-out infinite;
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .glass-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255,255,255,0.35), transparent 55%);
+      opacity: 0.7;
+      border-radius: inherit;
+      z-index: -1;
+      filter: blur(20px);
+    }
+    .glass-card:hover {
+      animation: none;
+      transform: translateY(-12px) rotateX(4deg) rotateY(-6deg) scale(1.01);
+      box-shadow: 0 40px 70px rgba(0,0,0,0.55);
+    }
+    .project-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .project-card {
+      background: rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 20px;
+      width: 260px;
+      text-align: center;
+    }
+    .footer {
+      margin-top: 40px;
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+    /* YouTube link style */
+    .youtube-link {
+      margin-top: 15px;
+      font-size: 1.1rem;
+    }
+    .youtube-link a {
+      color: #ff4d4d;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .youtube-link a:hover {
+      color: #ff1a1a;
+      text-decoration: underline;
+    }
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotateX(0deg) rotateY(0deg);
+      }
+      50% {
+        transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🔊 Background Ocean Sound -->
+  <audio autoplay loop>
+    <source src="ocean-waves-250310.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- 🎥 Background Video -->
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="22183-712840599.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <div id="overlay"></div>
+
+  <div class="content">
+    <h1>Subash Lama</h1>
+    <p>System Administrator | Virtualization Expert | Creative Technologist | Record Producer</p>
+    
+    <div class="button-group">
+      <a href="#about" class="btn btn-outline-light">About</a>
+      <a href="projects.html" target="_blank" class="btn btn-outline-light">Projects</a>
+      <a href="#skills" class="btn btn-outline-light">Skills</a>
+      <a href="#contact" class="btn btn-outline-light">Contact</a>
+      <a href="record-producer.html" target="_blank" class="btn btn-outline-light">Record Producer</a>
+    </div>
+
+    <section id="about" class="glass-card">
+      <h2>About Me</h2>
+      <p>
+        I am Subash, a passionate System Architect and Creative Explorer with expertise in virtualization, automation, innovative technology solutions and Music Production. I thrive on solving complex problems and building scalable systems.
+      </p>
+    </section>
+
+    <section id="projects" class="glass-card">
+      <h2>Projects</h2>
+      <div class="project-list">
+        <div class="project-card">
+          <h4>Virtual Lab Automation</h4>
+          <p>Designed and deployed a scalable virtual lab for training and testing, reducing setup time by 70%.</p>
+        </div>
+        <div class="project-card">
+          <h4>Cloud Migration Suite</h4>
+          <p>Led the migration of legacy systems to cloud infrastructure, improving reliability and cost efficiency.</p>
+        </div>
+        <div class="project-card">
+          <h4>Monitoring Dashboard</h4>
+          <p>Developed a real-time dashboard for system health and alerts, enhancing proactive maintenance.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="glass-card">
+      <h2>Skills</h2>
+      <p>
+        <strong>Technologies:</strong> VMware, Hyper-V, Docker, Kubernetes, AWS, Azure<br>
+        <strong>Languages:</strong> Python, Bash, PowerShell<br>
+        <strong>Other:</strong> Automation, System Design, Security, Troubleshooting
+      </p>
+    </section>
+
+    <section id="contact" class="glass-card">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:lamasubash107@gmail.com" style="color:#fff;text-decoration:underline;">lamasubash107@gmail.com</a></p>
+
+      <!-- 🎬 Added YouTube Channel Link -->
+      <div class="youtube-link">
+        🎧 Visit my YouTube Channel: 
+        <a href="https://www.youtube.com/@AHalf-h5n" target="_blank" rel="noopener noreferrer">
+          @AHalf-h5n
+        </a>
+      </div>
+    </section>
+
+    <div class="footer">
+      &copy; 2024 Subash Lama. All rights reserved.
+    </div>
+  </div>
+</body>
+</html>
