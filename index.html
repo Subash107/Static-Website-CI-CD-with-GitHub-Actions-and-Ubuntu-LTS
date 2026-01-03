@@ -51,6 +51,28 @@
       font-weight: 800;
       margin-bottom: 1rem;
     }
+    .hero-name {
+      position: relative;
+      display: inline-block;
+      padding: 0 0.75rem;
+    }
+    .hero-name::before,
+    .hero-name::after {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      background: radial-gradient(circle, rgba(255,255,255,0.6) 10%, transparent 55%);
+      opacity: 0;
+      filter: blur(6px);
+      mix-blend-mode: screen;
+      pointer-events: none;
+      animation: fairyDust 3s linear infinite alternate;
+    }
+    .hero-name::after {
+      animation-delay: 1.5s;
+      inset: -10px;
+      opacity: 0.6;
+    }
     h2 {
       margin-bottom: 1.5rem;
     }
@@ -109,8 +131,8 @@
       border: 1px solid rgba(255,255,255,0.08);
       backdrop-filter: blur(12px);
       transform-style: preserve-3d;
-      animation: fold 9s ease-in-out infinite;
-      transform-origin: top center;
+      animation: sway 18s ease-in-out infinite;
+      transform-origin: center;
       transition: transform 0.6s ease, box-shadow 0.6s ease;
       position: relative;
       overflow: hidden;
@@ -126,9 +148,9 @@
       filter: blur(20px);
     }
     .glass-card:hover {
-      animation: none;
-      transform: rotateX(0deg) translateY(-4px) scale(1.01);
-      box-shadow: 0 45px 75px rgba(0,0,0,0.6);
+      animation: pulse 3s ease-in-out infinite alternate;
+      transform: translateY(-10px) rotateX(3deg) rotateY(-2deg) scale(1.02);
+      box-shadow: 0 55px 85px rgba(0,0,0,0.65);
     }
     .project-list {
       display: flex;
@@ -162,15 +184,33 @@
       color: #ff1a1a;
       text-decoration: underline;
     }
-    @keyframes fold {
+    @keyframes sway {
       0%, 100% {
-        transform: rotateX(0deg);
+        transform: rotateX(1deg) rotateY(-1deg);
       }
       40% {
-        transform: rotateX(-12deg);
+        transform: rotateX(-2deg) rotateY(2deg) scale(1.01);
       }
       60% {
-        transform: rotateX(8deg);
+        transform: rotateX(2deg) rotateY(-2deg) scale(1.01);
+      }
+    }
+    @keyframes pulse {
+      from {
+        transform: translateY(-10px) rotateX(2deg) rotateY(-2deg) scale(1.02);
+      }
+      to {
+        transform: translateY(-15px) rotateX(5deg) rotateY(-4deg) scale(1.04);
+      }
+    }
+    @keyframes fairyDust {
+      from {
+        transform: translateY(-6px) scale(0.95);
+        opacity: 0.45;
+      }
+      to {
+        transform: translateY(8px) scale(1.08);
+        opacity: 1;
       }
     }
   </style>
@@ -193,7 +233,7 @@
   <div id="overlay"></div>
 
   <div class="content">
-    <h1>Subash Lama</h1>
+    <h1 class="hero-name">Subash Lama</h1>
     <p>System Administrator | Virtualization Expert | Creative Technologist | Record Producer</p>
     
     <div class="button-group">
