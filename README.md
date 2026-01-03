@@ -1,22 +1,20 @@
-# 🚀 Automated Static Webiste Hosting with Docker & Bash
+# Subash Lama | Static Portfolio
+This repository hosts Subash Lama’s multimedia-rich portfolio, packaged as a static site that GitHub Pages and the included CI/CD workflows can deploy automatically.
 
-This project hosts a multimedia-rich HTML portfolio using Docker, with automation powered by Bash scripting. Designed to launch the portfolio in your browser every 30 seconds (without duplicate tabs), it also includes logging functionality for monitoring behavior. Perfect for experimenting with DevOps workflows while adding a creative twist.
+## Features
+- Responsive hero with ambient video/audio background.
+- Floating 3D “glass” panels for About, Projects, Skills, and Contact.
+- A dedicated Record Producer story page plus media assets.
+- GitHub Actions workflows that build, lint, and deploy the static site.
 
----
-
-## 📦 Features
-
-- Containerized website using Docker
-- Automated browser launch every 30 seconds (avoids duplicate tabs)
-- Logging of activity with timestamps
-- Easy scheduling using Task Scheduler (Windows)
-- Lightweight multimedia integration support
-
----
-
-## 🛠️ Setup Instructions
-
-### 1. Clone the Repository
+## Local Preview
+Before pushing deployments, run a lightweight server so the background video/audio and CSS animations load just as they will in production:
 ```bash
-git clone https://github.com/yourusername/portfolio-automation.git
-cd portfolio-automation
+# serve from the repo root
+python -m http.server 8000
+```
+Then open `http://localhost:8000/index.html` in your browser to see the latest animation work. Refresh after edits to confirm everything renders as expected.
+
+## Deployment
+- GitHub Actions automatically publishes the `main` branch to GitHub Pages.
+- If you ever need to rebuild manually, run `docker build .` and `docker run` using the provided `Dockerfile`, or follow the instructions inside `.github/workflows`.

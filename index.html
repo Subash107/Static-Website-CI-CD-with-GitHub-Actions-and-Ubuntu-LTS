@@ -43,7 +43,7 @@
       align-items: center;
       text-align: center;
       padding: 60px 20px 20px 20px;
-      perspective: 1400px;
+      perspective: 2200px;
       gap: 1rem;
     }
     h1 {
@@ -127,15 +127,27 @@
       padding: 30px 25px;
       max-width: 920px;
       width: 100%;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+      box-shadow: 0 25px 70px rgba(0,0,0,0.5);
       border: 1px solid rgba(255,255,255,0.08);
       backdrop-filter: blur(12px);
       transform-style: preserve-3d;
-      animation: sway 18s ease-in-out infinite;
+      animation: orbit 12s ease-in-out infinite;
       transform-origin: center;
-      transition: transform 0.6s ease, box-shadow 0.6s ease;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
       position: relative;
       overflow: hidden;
+      will-change: transform;
+    }
+    .glass-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255,255,255,0.15), transparent 55%);
+      opacity: 0.6;
+      filter: blur(30px);
+      border-radius: inherit;
+      z-index: -2;
+      pointer-events: none;
     }
     .glass-card::after {
       content: "";
@@ -149,8 +161,8 @@
     }
     .glass-card:hover {
       animation: pulse 3s ease-in-out infinite alternate;
-      transform: translateY(-10px) rotateX(3deg) rotateY(-2deg) scale(1.02);
-      box-shadow: 0 55px 85px rgba(0,0,0,0.65);
+      transform: translateY(-12px) rotateX(6deg) rotateY(-3deg) scale(1.03);
+      box-shadow: 0 60px 90px rgba(0,0,0,0.7);
     }
     .project-list {
       display: flex;
@@ -184,15 +196,21 @@
       color: #ff1a1a;
       text-decoration: underline;
     }
-    @keyframes sway {
-      0%, 100% {
-        transform: rotateX(1deg) rotateY(-1deg);
+    @keyframes orbit {
+      0% {
+        transform: rotateX(3deg) rotateY(-2deg) translateZ(2px);
       }
-      40% {
-        transform: rotateX(-2deg) rotateY(2deg) scale(1.01);
+      25% {
+        transform: rotateX(-4deg) rotateY(4deg) translateZ(6px);
       }
-      60% {
-        transform: rotateX(2deg) rotateY(-2deg) scale(1.01);
+      50% {
+        transform: rotateX(6deg) rotateY(-5deg) translateZ(8px);
+      }
+      75% {
+        transform: rotateX(-3deg) rotateY(3deg) translateZ(4px);
+      }
+      100% {
+        transform: rotateX(3deg) rotateY(-2deg) translateZ(2px);
       }
     }
     @keyframes pulse {
