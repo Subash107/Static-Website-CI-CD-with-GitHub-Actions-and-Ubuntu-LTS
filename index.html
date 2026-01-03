@@ -120,6 +120,45 @@
     section {
       width: 100%;
     }
+    .flip-card {
+      width: 100%;
+      perspective: 2200px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      transform-style: preserve-3d;
+      transition: transform 1.2s ease-in-out;
+      animation: flip 18s ease-in-out infinite;
+    }
+    .flip-card-face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      backface-visibility: hidden;
+    }
+    .flip-card-front {
+      z-index: 2;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(180deg, rgba(12,19,32,0.95), rgba(5,9,17,0.9));
+      padding: 30px;
+      text-align: center;
+      box-shadow: inset 0 0 45px rgba(255,255,255,0.08);
+    }
+    .flip-card-face h3 {
+      margin-bottom: 0.8rem;
+      font-size: 1.8rem;
+      color: #fff;
+      letter-spacing: 0.04em;
+    }
+    .flip-card-face p {
+      color: rgba(255,255,255,0.85);
+    }
     .glass-card {
       background: linear-gradient(155deg, rgba(12,19,32,0.85), rgba(5,9,17,0.65));
       border-radius: 18px;
@@ -207,10 +246,21 @@
         transform: rotateX(6deg) rotateY(-5deg) translateZ(8px);
       }
       75% {
-        transform: rotateX(-3deg) rotateY(3deg) translateZ(4px);
+      transform: rotateX(-3deg) rotateY(3deg) translateZ(4px);
       }
       100% {
         transform: rotateX(3deg) rotateY(-2deg) translateZ(2px);
+      }
+    }
+    @keyframes flip {
+      0%, 100% {
+        transform: rotateY(0deg);
+      }
+      45% {
+        transform: rotateY(180deg);
+      }
+      55% {
+        transform: rotateY(180deg);
       }
     }
     @keyframes pulse {
@@ -263,49 +313,91 @@
     </div>
 
     <section id="about" class="glass-card">
-      <h2>About Me</h2>
-      <p>
-        I am Subash, a passionate System Architect and Creative Explorer with expertise in virtualization, automation, innovative technology solutions and Music Production. I thrive on solving complex problems and building scalable systems.
-      </p>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-face flip-card-front">
+            <h2>About Me</h2>
+            <p>
+              I am Subash, a passionate System Architect and Creative Explorer with expertise in virtualization, automation, innovative technology solutions and Music Production. I thrive on solving complex problems and building scalable systems.
+            </p>
+          </div>
+          <div class="flip-card-face flip-card-back">
+            <h3>Deep Dive</h3>
+            <p>Years of virtual lab automation, scaling environments, and blending creative production into enterprise workflows.</p>
+            <p><strong>Let’s connect</strong> to build experiences that pair technical depth with artistic vision.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="projects" class="glass-card">
-      <h2>Projects</h2>
-      <div class="project-list">
-        <div class="project-card">
-          <h4>Virtual Lab Automation</h4>
-          <p>Designed and deployed a scalable virtual lab for training and testing, reducing setup time by 70%.</p>
-        </div>
-        <div class="project-card">
-          <h4>Cloud Migration Suite</h4>
-          <p>Led the migration of legacy systems to cloud infrastructure, improving reliability and cost efficiency.</p>
-        </div>
-        <div class="project-card">
-          <h4>Monitoring Dashboard</h4>
-          <p>Developed a real-time dashboard for system health and alerts, enhancing proactive maintenance.</p>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-face flip-card-front">
+            <h2>Projects</h2>
+            <div class="project-list">
+              <div class="project-card">
+                <h4>Virtual Lab Automation</h4>
+                <p>Designed and deployed a scalable virtual lab for training and testing, reducing setup time by 70%.</p>
+              </div>
+              <div class="project-card">
+                <h4>Cloud Migration Suite</h4>
+                <p>Led the migration of legacy systems to cloud infrastructure, improving reliability and cost efficiency.</p>
+              </div>
+              <div class="project-card">
+                <h4>Monitoring Dashboard</h4>
+                <p>Developed a real-time dashboard for system health and alerts, enhancing proactive maintenance.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flip-card-face flip-card-back">
+            <h3>Behind the Scenes</h3>
+            <p>Every release is driven by automation, dockerized builds, and GitHub Actions for CI/CD.</p>
+            <p>Toggle the Projects tab or open the record producer showcase to see the latest demos.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="skills" class="glass-card">
-      <h2>Skills</h2>
-      <p>
-        <strong>Technologies:</strong> VMware, Hyper-V, Docker, Kubernetes, AWS, Azure<br>
-        <strong>Languages:</strong> Python, Bash, PowerShell<br>
-        <strong>Other:</strong> Automation, System Design, Security, Troubleshooting
-      </p>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-face flip-card-front">
+            <h2>Skills</h2>
+            <p>
+              <strong>Technologies:</strong> VMware, Hyper-V, Docker, Kubernetes, AWS, Azure<br>
+              <strong>Languages:</strong> Python, Bash, PowerShell<br>
+              <strong>Other:</strong> Automation, System Design, Security, Troubleshooting
+            </p>
+          </div>
+          <div class="flip-card-face flip-card-back">
+            <h3>Toolset</h3>
+            <p>Infrastructure as code, observability, and multimedia storytelling round out the skillset.</p>
+            <p>Ready to pair automation with creative production to ship experiences end to end.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="contact" class="glass-card">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:lamasubash107@gmail.com" style="color:#fff;text-decoration:underline;">lamasubash107@gmail.com</a></p>
-
-      <!-- 🎬 Added YouTube Channel Link -->
-      <div class="youtube-link">
-        🎧 Visit my YouTube Channel: 
-        <a href="https://www.youtube.com/@AHalf-h5n" target="_blank" rel="noopener noreferrer">
-          @AHalf-h5n
-        </a>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-face flip-card-front">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:lamasubash107@gmail.com" style="color:#fff;text-decoration:underline;">lamasubash107@gmail.com</a></p>
+            <div class="youtube-link">
+              🎧 Visit my YouTube Channel: 
+              <a href="https://www.youtube.com/@AHalf-h5n" target="_blank" rel="noopener noreferrer">
+                @AHalf-h5n
+              </a>
+            </div>
+          </div>
+          <div class="flip-card-face flip-card-back">
+            <h3>Let’s Collaborate</h3>
+            <p>Drop me a line for DevOps engagements, creative tech projects, or music production sessions.</p>
+            <p>I respond quickly and enjoy turning hybrid skills into memorable outcomes.</p>
+          </div>
+        </div>
       </div>
     </section>
 
