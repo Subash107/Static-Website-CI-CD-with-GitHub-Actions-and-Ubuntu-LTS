@@ -55,23 +55,33 @@
       position: relative;
       display: inline-block;
       padding: 0 0.75rem;
+      overflow: visible;
+    }
+    .hero-name .hero-letter {
+      opacity: 0;
+      display: inline-block;
+      transform: translateY(14px) scale(0.9);
+      animation: nameReveal 0.9s cubic-bezier(0.3, 0.1, 0.1, 1.2) forwards;
+      animation-delay: calc(var(--letter-index, 0) * 0.08s);
+      text-shadow: 0 0 18px rgba(255, 255, 255, 0.75);
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.35));
     }
     .hero-name::before,
     .hero-name::after {
       content: "";
       position: absolute;
       inset: -4px;
-      background: radial-gradient(circle, rgba(255,255,255,0.6) 10%, transparent 55%);
+      background: radial-gradient(circle, rgba(255,255,255,0.65) 12%, transparent 58%);
       opacity: 0;
       filter: blur(6px);
       mix-blend-mode: screen;
       pointer-events: none;
-      animation: fairyDust 3s linear infinite alternate;
+      animation: fairyDust 3s ease-out forwards;
     }
     .hero-name::after {
-      animation-delay: 1.5s;
+      animation-delay: 0.7s;
       inset: -10px;
-      opacity: 0.6;
+      opacity: 0.7;
     }
     h2 {
       margin-bottom: 1.5rem;
@@ -136,7 +146,8 @@
     .book-card-inner {
       position: relative;
       width: 100%;
-      min-height: 160px;
+      height: auto;
+      max-height: 640px;
       transform-style: preserve-3d;
       transition: transform 0.95s cubic-bezier(0.36, 0.14, 0.26, 1);
       will-change: transform;
@@ -151,7 +162,7 @@
       box-shadow: 0 40px 90px rgba(0, 0, 0, 0.65), inset 0 0 45px rgba(255, 255, 255, 0.05);
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       text-align: center;
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -159,7 +170,11 @@
       color: #fff;
       gap: 1rem;
       width: 100%;
-      min-height: 240px;
+      height: auto;
+      max-height: 620px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      overscroll-behavior: contain;
       line-height: 1.7;
       word-wrap: break-word;
       overflow-wrap: break-word;
@@ -199,10 +214,10 @@
       }
       .book-card-face {
         padding: clamp(1.5rem, 4vw, 2.75rem);
-        min-height: 240px;
+        max-height: 520px;
       }
       .book-card-inner {
-        min-height: 220px;
+        max-height: 540px;
       }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -345,13 +360,34 @@
       }
     }
     @keyframes fairyDust {
-      from {
-        transform: translateY(-6px) scale(0.95);
-        opacity: 0.45;
+      0% {
+        opacity: 0;
+        transform: scale(0.95);
       }
-      to {
-        transform: translateY(8px) scale(1.08);
+      60% {
+        opacity: 0.6;
+        transform: scale(1.02);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.12);
+      }
+    }
+    @keyframes nameReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.88);
+        filter: blur(6px);
+      }
+      65% {
         opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
       }
     }
   </style>
@@ -481,6 +517,20 @@
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      const heroName = document.querySelector('.hero-name');
+      if (heroName && !heroName.dataset.animated) {
+        const letters = heroName.textContent.trim().split('');
+        heroName.textContent = '';
+        heroName.setAttribute('aria-label', 'Subash Lama');
+        letters.forEach((letter, index) => {
+          const span = document.createElement('span');
+          span.classList.add('hero-letter');
+          span.textContent = letter === ' ' ? '\u00a0' : letter;
+          span.style.setProperty('--letter-index', index);
+          heroName.appendChild(span);
+        });
+        heroName.dataset.animated = 'true';
+      }
       document.querySelectorAll('[data-flip-card]').forEach(card => {
         let locked = false;
         let holding = false;
