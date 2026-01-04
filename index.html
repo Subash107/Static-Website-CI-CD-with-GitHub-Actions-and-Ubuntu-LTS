@@ -119,13 +119,19 @@
     }
     section {
       width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.75rem 0;
     }
     .book-card {
-      width: 100%;
+      width: min(860px, 100%);
+      max-width: 860px;
       perspective: 2200px;
       position: relative;
       cursor: pointer;
       outline: none;
+      margin: 0 auto;
     }
     .book-card-inner {
       position: relative;
@@ -139,19 +145,25 @@
     .book-card-face {
       position: absolute;
       inset: 0;
-      padding: 24px 22px;
+      padding: clamp(1.5rem, 2.25vw, 3rem);
       border-radius: inherit;
       background: linear-gradient(160deg, rgba(18, 26, 46, 0.96), rgba(11, 16, 26, 0.92));
       box-shadow: 0 40px 90px rgba(0, 0, 0, 0.65), inset 0 0 45px rgba(255, 255, 255, 0.05);
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: stretch;
+      align-items: center;
       text-align: center;
       border: 1px solid rgba(255, 255, 255, 0.08);
       backface-visibility: hidden;
       color: #fff;
       gap: 1rem;
+      width: 100%;
+      min-height: 240px;
+      line-height: 1.7;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     .book-card-front h2,
     .book-card-back h3 {
@@ -172,6 +184,11 @@
       margin: 0;
       color: rgba(255, 255, 255, 0.85);
       line-height: 1.65;
+      max-width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      text-align: center;
     }
     .book-card.is-flipped .book-card-inner {
       transform: rotateY(180deg);
@@ -181,10 +198,11 @@
         perspective: 1500px;
       }
       .book-card-face {
-        padding: 30px 24px;
+        padding: clamp(1.5rem, 4vw, 2.75rem);
+        min-height: 240px;
       }
       .book-card-inner {
-        min-height: 200px;
+        min-height: 220px;
       }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -196,9 +214,9 @@
       background: linear-gradient(155deg, rgba(12,19,32,0.85), rgba(5,9,17,0.65));
       border-radius: 18px;
       margin: 16px 0;
-      padding: 20px 18px;
+      padding: clamp(1.25rem, 2vw, 2.25rem);
       max-width: 920px;
-      width: 100%;
+      width: min(920px, 100%);
       box-shadow: 0 25px 70px rgba(0,0,0,0.5);
       border: 1px solid rgba(255,255,255,0.08);
       backdrop-filter: blur(12px);
@@ -209,6 +227,10 @@
       position: relative;
       overflow: hidden;
       will-change: transform;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
     .glass-card::before {
       content: "";
@@ -240,19 +262,28 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.25rem;
-      width: 100%;
-      justify-items: center;
-      margin-top: 0.5rem;
+      width: min(760px, 100%);
+      justify-items: stretch;
+      align-items: stretch;
+      margin: 0.5rem auto 0;
     }
     .project-card {
       background: linear-gradient(180deg, rgba(24, 33, 56, 0.92), rgba(14, 18, 30, 0.96));
       border-radius: 12px;
-      padding: 18px 18px;
+      padding: clamp(1rem, 2vw, 1.5rem);
       width: 100%;
-      max-width: 240px;
+      max-width: 280px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
       border: 1px solid rgba(255, 255, 255, 0.12);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     .project-card h4 {
       margin-bottom: 0.5rem;
@@ -262,9 +293,12 @@
     }
     .project-card p {
       color: rgba(255, 255, 255, 0.78);
-      line-height: 1.4;
+      line-height: 1.6;
       margin: 0;
       font-size: 0.95rem;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     .footer {
       margin-top: 40px;
