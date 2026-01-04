@@ -147,7 +147,7 @@
       position: relative;
       width: 100%;
       height: auto;
-      max-height: 640px;
+      max-height: none;
       transform-style: preserve-3d;
       transition: transform 0.95s cubic-bezier(0.36, 0.14, 0.26, 1);
       will-change: transform;
@@ -156,29 +156,41 @@
     .book-card-face {
       position: absolute;
       inset: 0;
-      padding: clamp(1.5rem, 2.25vw, 3rem);
+      padding: 0;
       border-radius: inherit;
       background: linear-gradient(160deg, rgba(18, 26, 46, 0.96), rgba(11, 16, 26, 0.92));
       box-shadow: 0 40px 90px rgba(0, 0, 0, 0.65), inset 0 0 45px rgba(255, 255, 255, 0.05);
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
       text-align: center;
       border: 1px solid rgba(255, 255, 255, 0.08);
       backface-visibility: hidden;
       color: #fff;
-      gap: 1rem;
+      gap: 0;
       width: 100%;
       height: auto;
-      max-height: 620px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      overscroll-behavior: contain;
+      max-height: none;
+      overflow: visible;
+    }
+    .card-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1rem;
+      padding: clamp(1.5rem, 2.25vw, 3rem);
       line-height: 1.7;
       word-wrap: break-word;
       overflow-wrap: break-word;
       hyphens: auto;
+      text-align: center;
+      max-height: 60vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      overscroll-behavior: contain;
     }
     .book-card-front h2,
     .book-card-back h3 {
@@ -212,12 +224,8 @@
       .book-card {
         perspective: 1500px;
       }
-      .book-card-face {
-        padding: clamp(1.5rem, 4vw, 2.75rem);
-        max-height: 520px;
-      }
-      .book-card-inner {
-        max-height: 540px;
+      .card-content {
+        max-height: 55vh;
       }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -232,6 +240,7 @@
       padding: clamp(1.25rem, 2vw, 2.25rem);
       max-width: 920px;
       width: min(920px, 100%);
+      height: auto;
       box-shadow: 0 25px 70px rgba(0,0,0,0.5);
       border: 1px solid rgba(255,255,255,0.08);
       backdrop-filter: blur(12px);
@@ -240,7 +249,7 @@
       transform-origin: center;
       transition: transform 0.5s ease, box-shadow 0.5s ease;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
       will-change: transform;
       display: flex;
       justify-content: center;
@@ -425,15 +434,19 @@
       <div class="book-card" data-flip-card tabindex="0">
         <div class="book-card-inner">
           <article class="book-card-face book-card-front">
-            <h2>About Me</h2>
-            <p>
-              Subash Lama is a systems leader who bridges enterprise-grade virtualization, automation, and creative production into consistent service delivery. He shapes secure infrastructure, keeps pipelines humming, and still finds room to innovate musically.
-            </p>
+            <div class="card-content">
+              <h2>About Me</h2>
+              <p>
+                Subash Lama is a systems leader who bridges enterprise-grade virtualization, automation, and creative production into consistent service delivery. He shapes secure infrastructure, keeps pipelines humming, and still finds room to innovate musically.
+              </p>
+            </div>
           </article>
           <article class="book-card-face book-card-back">
-            <h3>What I Bring</h3>
-            <p>Architected cross-platform labs, Docker-based CI/CD, and observability stacks that span cloud, hybrid, and on-prem estates.</p>
-            <p><strong>Open to collaborations</strong> where operational discipline meets experimental ideas.</p>
+            <div class="card-content">
+              <h3>What I Bring</h3>
+              <p>Architected cross-platform labs, Docker-based CI/CD, and observability stacks that span cloud, hybrid, and on-prem estates.</p>
+              <p><strong>Open to collaborations</strong> where operational discipline meets experimental ideas.</p>
+            </div>
           </article>
         </div>
       </div>
@@ -443,7 +456,8 @@
       <div class="book-card" data-flip-card tabindex="0">
         <div class="book-card-inner">
           <article class="book-card-face book-card-front">
-            <h2>Projects</h2>
+            <div class="card-content">
+              <h2>Projects</h2>
             <div class="project-list">
               <div class="project-card">
                 <h4>Virtual Lab Automation</h4>
@@ -458,11 +472,14 @@
                 <p>Released a CI/CD-driven dashboard for system health, alerting, and quick remediation playbooks.</p>
               </div>
             </div>
+            </div>
           </article>
           <article class="book-card-face book-card-back">
-            <h3>Delivery Notes</h3>
+            <div class="card-content">
+              <h3>Delivery Notes</h3>
             <p>Every experiment is backed by automated tests, versioned infra, and GitHub Actions so production stays steady.</p>
-            <p>Record-producer work and multimedia demos live alongside infrastructure stories—always ready to show live artifacts.</p>
+            <p>Record-producer work and multimedia demos live alongside infrastructure stories-always ready to show live artifacts.</p>
+            </div>
           </article>
         </div>
       </div>
@@ -472,17 +489,21 @@
       <div class="book-card" data-flip-card tabindex="0">
         <div class="book-card-inner">
           <article class="book-card-face book-card-front">
-            <h2>Skills</h2>
-            <p>
-              <strong>Technologies:</strong> VMware, Hyper-V, Docker, Kubernetes, AWS, Azure<br>
-              <strong>Languages:</strong> Python, Bash, PowerShell, TypeScript<br>
-              <strong>Security:</strong> IAM, hardening, secrets automation, incident response
-            </p>
+            <div class="card-content">
+              <h2>Skills</h2>
+              <p>
+                <strong>Technologies:</strong> VMware, Hyper-V, Docker, Kubernetes, AWS, Azure<br>
+                <strong>Languages:</strong> Python, Bash, PowerShell, TypeScript<br>
+                <strong>Security:</strong> IAM, hardening, secrets automation, incident response
+              </p>
+            </div>
           </article>
           <article class="book-card-face book-card-back">
-            <h3>Depth</h3>
-            <p>IaC, observability, and multimedia storytelling keep the message clear while the ops stay predictable.</p>
-            <p>Pair automation with creative productions—Subash ships end-to-end experiences.</p>
+            <div class="card-content">
+              <h3>Depth</h3>
+              <p>IaC, observability, and multimedia storytelling keep the message clear while the ops stay predictable.</p>
+              <p>Pair automation with creative productions-Subash ships end-to-end experiences.</p>
+            </div>
           </article>
         </div>
       </div>
@@ -492,20 +513,24 @@
       <div class="book-card" data-flip-card tabindex="0">
         <div class="book-card-inner">
           <article class="book-card-face book-card-front">
-            <h2>Contact</h2>
-            <p>Email: <a href="mailto:lamasubash107@gmail.com" style="color:#fff;text-decoration:underline;">lamasubash107@gmail.com</a></p>
-            <div class="youtube-link">
-              dYZ Visit my YouTube Channel: 
-              <a href="https://www.youtube.com/@AHalf-h5n" target="_blank" rel="noopener noreferrer">
-                @AHalf-h5n
-              </a>
+            <div class="card-content">
+              <h2>Contact</h2>
+              <p>Email: <a href="mailto:lamasubash107@gmail.com" style="color:#fff;text-decoration:underline;">lamasubash107@gmail.com</a></p>
+              <div class="youtube-link">
+                dYZ Visit my YouTube Channel: 
+                <a href="https://www.youtube.com/@AHalf-h5n" target="_blank" rel="noopener noreferrer">
+                  @AHalf-h5n
+                </a>
+              </div>
+              <p>Available for DevOps partnerships, creative technology consulting, and music-production collaborations.</p>
             </div>
-            <p>Available for DevOps partnerships, creative technology consulting, and music-production collaborations.</p>
           </article>
           <article class="book-card-face book-card-back">
-            <h3>Stay in Touch</h3>
-            <p>Share your next infrastructure sprint, hybrid-cloud proof of concept, or sonic experiment and I’ll respond within 24 hours.</p>
-            <p>Join the beta demos, catch a live stream, or set up a quick sync—always game for the next hybrid challenge.</p>
+            <div class="card-content">
+              <h3>Stay in Touch</h3>
+              <p>Share your next infrastructure sprint, hybrid-cloud proof of concept, or sonic experiment and I'll respond within 24 hours.</p>
+              <p>Join the beta demos, catch a live stream, or set up a quick sync-always game for the next hybrid challenge.</p>
+            </div>
           </article>
         </div>
       </div>
