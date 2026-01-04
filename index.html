@@ -171,6 +171,7 @@
       gap: 0;
       width: 100%;
       height: auto;
+      min-height: 280px;
       max-height: none;
       overflow: visible;
     }
@@ -181,16 +182,15 @@
       justify-content: flex-start;
       align-items: center;
       gap: 1rem;
-      padding: clamp(1.5rem, 2.25vw, 3rem);
+      padding: clamp(2rem, 2.5vw, 3.25rem);
       line-height: 1.7;
       word-wrap: break-word;
       overflow-wrap: break-word;
       hyphens: auto;
       text-align: center;
-      max-height: 60vh;
-      overflow-y: auto;
-      overflow-x: hidden;
-      overscroll-behavior: contain;
+      min-height: 280px;
+      max-height: none;
+      overflow: visible;
     }
     .book-card-front h2,
     .book-card-back h3 {
@@ -240,6 +240,7 @@
       padding: clamp(1.25rem, 2vw, 2.25rem);
       max-width: 920px;
       width: min(920px, 100%);
+      min-height: 320px;
       height: auto;
       box-shadow: 0 25px 70px rgba(0,0,0,0.5);
       border: 1px solid rgba(255,255,255,0.08);
