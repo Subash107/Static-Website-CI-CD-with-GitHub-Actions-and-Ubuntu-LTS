@@ -63,11 +63,13 @@
       transform: translateY(14px) scale(0.9);
       animation:
         nameReveal 0.85s cubic-bezier(0.3, 0.1, 0.1, 1.2) forwards,
-        heroGlow 3s ease-in-out both;
+        heroGlow 3s ease-in-out both,
+        heroDust 1.1s ease-out forwards;
       animation-delay:
         calc(var(--letter-index, 0) * 0.08s),
-        calc(var(--letter-index, 0) * 0.08s + 0.85s);
-      animation-fill-mode: forwards, both;
+        calc(var(--letter-index, 0) * 0.08s + 0.85s),
+        calc(var(--letter-index, 0) * 0.08s + 0.05s);
+      animation-fill-mode: forwards, both, forwards;
       text-shadow: 0 0 18px rgba(255, 255, 255, 0.75);
       filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.35));
     }
@@ -138,6 +140,7 @@
       justify-content: center;
       align-items: center;
       padding: 0.75rem 0;
+      background: transparent;
     }
     .book-card {
       width: min(860px, 100%);
@@ -263,9 +266,9 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(120deg, rgba(255,255,255,0.15), transparent 55%);
-      opacity: 0.6;
-      filter: blur(30px);
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.25), transparent 55%);
+      opacity: 0.35;
+      filter: blur(22px);
       border-radius: inherit;
       z-index: -2;
       pointer-events: none;
@@ -274,11 +277,11 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top right, rgba(255,255,255,0.35), transparent 55%);
-      opacity: 0.7;
+      background: radial-gradient(circle at 72% 4%, rgba(255,255,255,0.28), transparent 58%);
+      opacity: 0.45;
       border-radius: inherit;
       z-index: -1;
-      filter: blur(20px);
+      filter: blur(18px);
     }
     .glass-card:hover {
       animation: pulse 3s ease-in-out infinite alternate;
@@ -374,15 +377,15 @@
     @keyframes fairyDust {
       0% {
         opacity: 0;
-        transform: scale(0.95);
+        transform: translateY(-6px) scale(0.92);
       }
-      60% {
-        opacity: 0.6;
-        transform: scale(1.02);
+      40% {
+        opacity: 0.7;
+        transform: translateY(-2px) scale(1.05);
       }
       100% {
         opacity: 0;
-        transform: scale(1.12);
+        transform: translateY(4px) scale(1.15);
       }
     }
     @keyframes nameReveal {
@@ -414,6 +417,23 @@
       100% {
         text-shadow: 0 0 10px rgba(255, 255, 255, 0.55);
         filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.35));
+      }
+    }
+    @keyframes heroDust {
+      0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.92);
+        filter: blur(5px);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(-3px) scale(1);
+        filter: blur(0);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1.01);
+        filter: blur(0);
       }
     }
   </style>
