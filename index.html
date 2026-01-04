@@ -311,19 +311,20 @@
     .project-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.25rem;
+      gap: clamp(1rem, 2vw, 1.5rem);
       width: 100%;
-      max-width: 100%;
+      max-width: 960px;
       justify-items: stretch;
       align-items: stretch;
       margin: 0.5rem auto 0;
+      grid-auto-rows: minmax(0, auto);
     }
     .project-card {
       background: linear-gradient(180deg, rgba(24, 33, 56, 0.92), rgba(14, 18, 30, 0.96));
       border-radius: 12px;
       padding: clamp(1rem, 2vw, 1.5rem);
       width: 100%;
-      max-width: 320px;
+      max-width: none;
       min-height: 220px;
       display: flex;
       flex-direction: column;
@@ -335,6 +336,7 @@
       word-wrap: break-word;
       overflow-wrap: break-word;
       hyphens: auto;
+      box-sizing: border-box;
     }
     .project-card h4 {
       margin-bottom: 0.5rem;
@@ -423,6 +425,8 @@
     .contact-section .section-content {
       align-items: flex-start;
       text-align: left;
+      width: 100%;
+      max-width: 640px;
     }
     .skill-groups {
       width: 100%;
@@ -483,6 +487,11 @@
       color: #8ae8ff;
       text-decoration: none;
       font-weight: 600;
+    }
+    .contact-details,
+    .contact-details p,
+    .contact-details a {
+      word-break: break-word;
     }
     .footer {
       margin-top: 40px;
