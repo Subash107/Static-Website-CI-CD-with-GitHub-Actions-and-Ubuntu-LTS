@@ -621,6 +621,49 @@
         filter: blur(0);
       }
     }
+    @media (max-width: 768px) {
+      body {
+        font-size: 90%;
+      }
+      .content {
+        padding: 40px 16px 32px;
+      }
+      .hero-section {
+        gap: 0.5rem;
+      }
+      .hero-section h1 {
+        font-size: clamp(2.2rem, 9vw, 2.7rem);
+      }
+      .button-group {
+        gap: 12px;
+        margin-bottom: 1rem;
+      }
+      .btn-outline-light {
+        padding: 0.75rem 1.5rem;
+        border-width: 1px;
+      }
+      .glass-card {
+        padding: 1.25rem;
+        min-height: auto;
+        margin: 0.75rem 0;
+      }
+      .section-content {
+        padding: 1.5rem 1rem;
+        min-height: auto;
+      }
+      .project-list {
+        gap: 0.75rem;
+      }
+      .project-card {
+        padding: 0.95rem 0.85rem;
+      }
+      .skill-groups {
+        grid-template-columns: 1fr;
+      }
+      .contact-details {
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 
